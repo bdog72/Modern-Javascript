@@ -1,29 +1,37 @@
-const myBook = {
-  title: '1984',
-  author: 'George Orwell',
-  pageCount: 326,
-};
+let myBook = {
+    title: '1984',
+    author: 'George Orwell',
+    pageCount: 326
+}
 
-const otherBook = {
-  title: 'A peoples history',
-  author: 'Howard Zinn',
-  pageCount: 723,
-};
+let otherBook = {
+    title: 'A Peoples History',
+    author: 'Howard Zinn',
+    pageCount: 723
+}
 
-const getSummary = book => ({
-  summary: `${book.title} by ${book.author}`,
-  pageCountSummary: `${book.title} is ${book.pageCount} pages long`,
-});
-const bookSummary = getSummary(myBook);
-const otherBookSummary = getSummary(otherBook);
+let getSummary = function (book) {
+    return {
+        summary: `${book.title} by ${book.author}`,
+        pageCountSummary: `${book.title} is ${book.pageCount} pages long`
+    }
+}
 
-console.log(bookSummary.pageCountSummary);
-console.log(otherBookSummary.pageCountSummary);
+let bookSummary = getSummary(myBook)
+let otherBookSummary = getSummary(otherBook)
 
-const convertFahrenheit = fahrenheit => ({
-  fahrenheit,
-  kelvin: (fahrenheit + 459.69) * (5 / 9),
-  celsius: (fahrenheit - 32) * (5 / 9),
-});
-const temps = convertFahrenheit(74);
-console.log(temps);
+console.log(bookSummary.pageCountSummary)
+
+// Challenge area
+// Create function - take fahrenheit in - return object with all three
+
+let convertFahrenheit = function (fahrenheit) {
+    return {
+        fahrenheit: fahrenheit,
+        kelvin: (fahrenheit + 459.67) * (5 / 9),
+        celsius: (fahrenheit - 32) * (5 / 9)
+    }
+}
+
+let temps = convertFahrenheit(74)
+console.log(temps)

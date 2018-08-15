@@ -1,13 +1,19 @@
-// const name = 'Andrew';
+// Global
+  // Local
+    // Local (name)
+  // Local
+
+///let name = 'Andrew'
 
 if (true) {
-  //   let name = 'Mike';
-  if (true) {
-    name = 'Jen';
-    console.log(name);
-  }
+    //let name = 'Mike'
+
+    if (true) {
+        let name = 'Jen'
+        console.log(name)
+    }
 }
 
 if (true) {
-  console.log(name);
+    console.log(name)
 }

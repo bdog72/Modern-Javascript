@@ -1,22 +1,30 @@
-// === = equality operator
-// !== = not equal operator
+// === - equality operator
+// !== - no equal opeartor
 // < - less than operator
-// > - greater than operator
+// > - greater than opeartor
+// <= - less than or equal to operator
+// >= - greater than or equal to opeartor
 
-const temp = 111;
+let temp = 180
 
-// const isFreezing = temp <= 100;
-
-// if (isFreezing) {
-//   console.log('It is freezing');
-// }
-
-if (temp >= 110) {
-  console.log('It is hot');
+if (temp <= 32) {
+    console.log('It is freezing outside!')
 }
 
-const age = 7;
+if (temp >= 110) {
+    console.log('It is way to hot outside!')
+}
 
+// Challenge area
+
+let age = 6
+
+// If 7 or under print message about child pricing
 if (age <= 7) {
-  console.log('You will get a child discount');
+    console.log('You will get a child discount!')
+}
+
+// If 65 or older print message about senior discount
+if (age >= 65) {
+    console.log('You will get a senior discount!')
 }

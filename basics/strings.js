@@ -1,7 +1,5 @@
-const city = 'Philadelphia';
+let city = 'Philadelphia'
+let country = 'United States'
+let location = city + ', ' + country
 
-const country = 'United States';
-
-const location = `${city}, ${country}`;
-
-console.log(location);
+console.log(location)

@@ -1,27 +1,22 @@
-const isAccountLocked = true;
-
-const userRole = 'admin';
-
-// if (isAccountLocked) {
-//   console.log('Youre account is locked');
-// } else {
-//   console.log('Welcome');
-// }
+let isAccountLocked = false
+let userRole = 'user'
 
 if (isAccountLocked) {
-  console.log('Youre account is locked');
+    console.log('Is account locked')
 } else if (userRole === 'admin') {
-  console.log('Welcome admin');
+    console.log('Welcome Admin')
 } else {
-  console.log('Welcome');
+    console.log('Welcome')
 }
 
-const temp = 45;
+// Challenge area
+
+let temp = 4
 
 if (temp <= 32) {
-  console.log('It is freezing outside');
+    console.log('It is freezing outside')
 } else if (temp >= 110) {
-  console.log('It is hot outside');
+    console.log('It is hot outside')
 } else {
-  console.log('It is pretty nice outside');
+    console.log('Go for it. It is pretty nice out')
 }
