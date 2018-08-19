@@ -1,10 +1,7 @@
-/* global localStorage */
-
-// Read existing notes from localstorage
-
-/* eslint-disable */
-const getSavedNotes = () => {
+// Read existing notes from localStorage
+const getSavedNotes = function () {
   const notesJSON = localStorage.getItem('notes');
+
   if (notesJSON !== null) {
     return JSON.parse(notesJSON);
   }
@@ -12,19 +9,33 @@ const getSavedNotes = () => {
 };
 
 // Save the notes to localStorage
-const saveNotes = notes => {
+const saveNotes = function (notes) {
   localStorage.setItem('notes', JSON.stringify(notes));
 };
 
+// Remove a note from the list
+const removeNote = function (id) {
+  const noteIndex = notes.findIndex(note => note.id === id);
+
+  if (noteIndex > -1) {
+    notes.splice(noteIndex, 1);
+  }
+};
+
 // Generate the DOM structure for a note
-const generateNoteDom = note => {
+const generateNoteDOM = function (note) {
   const noteEl = document.createElement('div');
   const textEl = document.createElement('span');
   const button = document.createElement('button');
 
-  // Setup the note remove button
+  // Setup the remove note button
   button.textContent = 'x';
   noteEl.appendChild(button);
+  button.addEventListener('click', () => {
+    removeNote(note.id);
+    saveNotes(notes);
+    renderNotes(notes, filters);
+  });
 
   // Setup the note title text
   if (note.title.length > 0) {
@@ -32,22 +43,19 @@ const generateNoteDom = note => {
   } else {
     textEl.textContent = 'Unnamed note';
   }
-
   noteEl.appendChild(textEl);
+
   return noteEl;
 };
 
 // Render application notes
-const renderNotes = (notes, filters) => {
-  const filteredNotes = notes.filter(note =>
-    note.title.toLowerCase().includes(filters.searchText.toLowerCase()),
-  );
+const renderNotes = function (notes, filters) {
+  const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(filters.searchText.toLowerCase()));
 
   document.querySelector('#notes').innerHTML = '';
 
-  filteredNotes.forEach(note => {
-    const noteEl = generateNoteDom(note);
-
+  filteredNotes.forEach((note) => {
+    const noteEl = generateNoteDOM(note);
     document.querySelector('#notes').appendChild(noteEl);
   });
 };

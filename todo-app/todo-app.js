@@ -1,7 +1,3 @@
-/* global document */
-
-/* global getSavedTodos saveTodos renderTodos */
-
 const todos = getSavedTodos();
 
 const filters = {
@@ -19,6 +15,7 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
 document.querySelector('#new-todo').addEventListener('submit', (e) => {
   e.preventDefault();
   todos.push({
+    id: uuidv4(),
     text: e.target.elements.text.value,
     completed: false,
   });

@@ -1,6 +1,3 @@
-/* global document */
-/* global saveNotes getSavedNotes renderNotes */
-
 const notes = getSavedNotes();
 
 const filters = {
@@ -9,8 +6,9 @@ const filters = {
 
 renderNotes(notes, filters);
 
-document.querySelector('#create-note').addEventListener('click', () => {
+document.querySelector('#create-note').addEventListener('click', (e) => {
   notes.push({
+    id: uuidv4(),
     title: '',
     body: '',
   });
