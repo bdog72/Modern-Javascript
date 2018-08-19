@@ -1,34 +1,10 @@
 /* global document */
-/* global localStorage */
+/* global saveNotes getSavedNotes renderNotes */
 
-let notes = [];
+const notes = getSavedNotes();
 
 const filters = {
   searchText: '',
-};
-
-// Check for existing saved data in storage
-const notesJSON = localStorage.getItem('notes');
-if (notesJSON !== null) {
-  notes = JSON.parse(notesJSON);
-}
-
-const renderNotes = (notes, filters) => {
-  const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(filters.searchText.toLowerCase()));
-
-  document.querySelector('#notes').innerHTML = '';
-
-  filteredNotes.forEach((note) => {
-    const noteEl = document.createElement('p');
-
-    if (note.title.length > 0) {
-      noteEl.textContent = note.title;
-    } else {
-      noteEl.textContent = 'Unnamed note';
-    }
-
-    document.querySelector('#notes').appendChild(noteEl);
-  });
 };
 
 renderNotes(notes, filters);
@@ -38,7 +14,7 @@ document.querySelector('#create-note').addEventListener('click', () => {
     title: '',
     body: '',
   });
-  localStorage.setItem('notes', JSON.stringify(notes));
+  saveNotes(notes);
   renderNotes(notes, filters);
 });
 
