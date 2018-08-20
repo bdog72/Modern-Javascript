@@ -1,5 +1,7 @@
+/* global document localStorage */
+
 // Read existing notes from localStorage
-const getSavedNotes = function () {
+const getSavedNotes = () => {
   const notesJSON = localStorage.getItem('notes');
 
   if (notesJSON !== null) {
@@ -9,12 +11,12 @@ const getSavedNotes = function () {
 };
 
 // Save the notes to localStorage
-const saveNotes = function (notes) {
+const saveNotes = (notes) => {
   localStorage.setItem('notes', JSON.stringify(notes));
 };
 
 // Remove a note from the list
-const removeNote = function (id) {
+const removeNote = (id) => {
   const noteIndex = notes.findIndex(note => note.id === id);
 
   if (noteIndex > -1) {
@@ -23,9 +25,9 @@ const removeNote = function (id) {
 };
 
 // Generate the DOM structure for a note
-const generateNoteDOM = function (note) {
+const generateNoteDOM = (note) => {
   const noteEl = document.createElement('div');
-  const textEl = document.createElement('span');
+  const textEl = document.createElement('a');
   const button = document.createElement('button');
 
   // Setup the remove note button
@@ -43,13 +45,14 @@ const generateNoteDOM = function (note) {
   } else {
     textEl.textContent = 'Unnamed note';
   }
+  textEl.setAttribute('href', `/edit.html#${note.id}`);
   noteEl.appendChild(textEl);
 
   return noteEl;
 };
 
 // Render application notes
-const renderNotes = function (notes, filters) {
+const renderNotes = (notes, filters) => {
   const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(filters.searchText.toLowerCase()));
 
   document.querySelector('#notes').innerHTML = '';
